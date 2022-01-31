@@ -86,3 +86,65 @@ Components of SQL syntax:
     * *The **ROLLBACK** clause* :
      * allows you to take a step back to the last non-committed state
      * the last change(s) made will not count
+
+---
+
+Introduction to Data Types:
+
+We must *always* specify the Type of data that will be inserted in *each* column of the table:
+
+`length` - is a measure used to indicate how many symbols a certain string has
+
+`size` - indicates the memory space used by a data type measured in bytes (1 byte ~ 1 symbol)
+
+`storage` - the physical space in the computer drive's memory, where the data is being saved or stored
+
+`Data Types` represent different types of information that can be contained in a specific column:
+
+* ***String*** or ***alphanumeric*** - can contain letters, digits, symbols, or blank spaces. String data types:
+    * *character* - **CHAR** example:
+    ```
+    CHAR:
+    Storage | exemple | length(symbols) size(bytes)
+    fixed | CHAR(5) | "James" 5 5
+        |         | "Bob" 3 5
+    VARCHAR:
+    Storage | exemple | length(symbols) size(bytes)
+    fixed | VARCHAR(5) | "James" 5 5
+        |         | "Bob" 3 3
+    ```
+    * *variable character* - **VARCHAR**
+    * *ENUM (enumerate)* - ENUM('M', 'F') - MySQL will show an error if you attempt to insert any value different from 'M' or 'F'
+
+* **Integers/Numeric** - numeric data types
+    * *signed* - the encompasses range includes both positive and negative values and  *unsigned* if integers are allowed to be only positive
+    * by default all integers are *signed*
+    * a smaller integer typ may increase the processing speed
+    * *integer* - whole numbers with no decimal point e.g. 5; 15; -200; 
+     * *TINYINT* 
+     * *SMALLINT*
+     * *MEDIUMINT*
+     * *INT*
+     * *BIGINT*
+    * *fixed-point* - represents exact values:
+     * *DECIMAL* - DECIMAL(5, 3)- 10.523, 10.5 -> 10.500, 10.523456778 -> 10.524 and gives a warning
+            * when only one digit is specified within the parentheses, it will be treated as the precision of the data type: DECIMAL(7) = DECIMAL(7, 0)
+     * *NUMERIC* = *DECIMAL* = *NUMERIC(p, s)*
+    * *floating-point* - is used for approximate values only and aims to balance between range and precision
+     * *FLOAT* - FLOAT(5, 3) 10.523456778 -> 10.524 and will not give a warning
+            * neads a 4 byte memory and has a single precission and 23 max nr of digits
+     * *DOUBLE*:
+            * neads a 8byte memory size , has a double precision and 53 max number of digits
+
+        `NUMERIC(p,s)`
+      * `precision` - refers to the number of digits in a number
+      * `scale` - refers to the number of digits to the right of the decimal point in a number
+* **DATE** - used to reprsent a date in the format YYYY-MM-DD
+* **DATETIME** - represents the date shown on the calendar and the time shown on the clock: YYYY-MM-DD HH:MM:SS
+* **TIMESTAMP** - used for a well-defined, exact point in time(expressed in seconds)
+    * representing a moment in time as a number allows you ti easily obtain the difference betweeen two TIMESTAMP valules
+    * is appropriate if you need to handle time zones
+    * must be written in quotes
+* **BLOB - Binary Large Object** - refers to a file of binary data(1s, 0s)
+    * involves saving files in a record
+
