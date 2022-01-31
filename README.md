@@ -148,3 +148,82 @@ We must *always* specify the Type of data that will be inserted in *each* column
 * **BLOB - Binary Large Object** - refers to a file of binary data(1s, 0s)
     * involves saving files in a record
 
+---
+
+Create table syntax:
+    * add at least one column
+```
+CREATE TABLE table_name (
+    column_1 data_type constrains,
+    column_2 data_type constrains,
+    ...
+    column_n data_type constrains
+);
+```
+### Manipulate Data:
+
+`AUTO_INCREMENT` - frees you from having to insert all purchase numbers manually through the INSERT command at a later stage
+    * assigns 1 to the first record of the table and automatically increments by 1 for every subsequent row
+    * is used only for *Primary key*, *Index*, *Unique key*
+***Using tables***
+> ***A query*** - a command you write in SQL with the idea of either *retrieving information* from the database on which you are working, or, alternatively, to *insert*, *update*, or *delete* data from it
+* It is a representation of a complete logical thought
+
+<!-- Constrains -->
+> ***Constrains*** - specific rules, or limits, that we define in our tables
+
+* The role of constraints is to outline the existing relationships between tables in our database, e.g. NOT NULL, PRIMARY KEY, FOREIGN KEY
+
+> `foreign key` - points to a column of another table and, thus, links the two tables
+
+> `on delete cascade` - if a specific value from *the parent table's primary key* has been deleted, all the records *from the child table* referring to this value will be removed as well
+
+> `unique key` - used whenever you would like to specify that you don't want to see duplicate data in a given field
+* ensures that all values in a column (or a set of columns) are different
+
+---
+Write and manipulate SQL code:
+
+*MySQL Workbench is the official graphical user interface(GUI) tool for MySQL*
+* You can load more yhan one connection at a time in your GUI
+
+>Create new user in Command prompt mySql:
+
+```
+//mysql -u root -p
+Enter password: *********
+
+Your MySQL connection id is 11
+Server version: 8.0.27 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE USER 'nativeuser'@'localhost'
+    -> IDENTIFIED WITH mysql_native_password BY '********';
+Query OK, 0 rows affected (0.05 sec)
+```
+
+> Great the privilages for the new user:
+
+```
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'nativeuser'@'localhost';
+Query OK, 0 rows affected (0.02 sec)
+```
+---
+
+>Create a database:
+
+`CREATE DATABASE [IF NOT EXISTS] database_name;`
+
+or
+
+`CREATE SCHEMA [IF NOT EXISTS] schema_name;`
+>Select the created database to be used:
+
+`USE database_name;`
